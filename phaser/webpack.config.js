@@ -12,8 +12,8 @@ const DIST_PATH = path.resolve(__dirname, 'dist');
 
 module.exports = {
     entry: {
-        app: [path.resolve(__dirname, 'src/main.js')],
-        vendor: ['phaser'], // maybe 'webfontloader'
+        main: path.resolve(__dirname, 'src/main.js'),
+        vendor: ['phaser', 'webfontloader'],
     },
     mode: 'development',
     output: {

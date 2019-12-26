@@ -25,7 +25,7 @@ export default class extends Phaser.Scene {
 
         this.add.existing(this.christmastree);
         this.add.text(100, 100, 'Phaser 3 + Webpack 4 + ES6 + Cordova 8', {
-            font: '64px Bangers',
+            font: '45px Bangers',
             fill: '#7744ff',
         });
     }

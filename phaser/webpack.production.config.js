@@ -11,10 +11,10 @@ const DIST_PATH = path.resolve(__dirname, '../www');
 
 module.exports = {
     entry: {
-        app: [path.resolve(__dirname, 'src/main.js')],
-        vendor: ['phaser'], // maybe 'webfontloader'
+        main: path.resolve(__dirname, 'src/main.js'),
+        vendor: ['phaser', 'webfontloader'],
     },
-    mode: 'development',
+    mode: 'production',
     output: {
         pathinfo: true,
         path: BUILD_PATH,
