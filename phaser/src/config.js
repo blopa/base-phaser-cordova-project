@@ -3,25 +3,13 @@ import Phaser from 'phaser';
 export default {
     type: Phaser.AUTO,
     parent: 'content',
-    width: 150,
-    height: 270,
+    width: 800,
+    height: 600,
     scale: {
         mode: Phaser.Scale.HEIGHT_CONTROLS_WIDTH,
         autoCenter: Phaser.Scale.CENTER_BOTH,
     },
     autoRound: false,
-    localStorageName: 'phasergamegotinha',
+    localStorageName: 'phaseres6webpack',
     pixelArt: true,
-    physics: {
-        default: 'arcade',
-        arcade: {
-            enableBody: true,
-            debug: false,
-            /*
-             * gravity: {
-             *     y: 500,
-             * },
-             */
-        },
-    },
 };

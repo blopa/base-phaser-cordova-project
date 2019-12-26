@@ -32,7 +32,7 @@ module.exports = {
                 collapseWhitespace: true,
                 preserveLineBreaks: false,
             },
-            title: 'Gotinha',
+            title: 'base-phaser-cordova-project',
             favicon: `${IMAGE_DIR}/favicon.ico`,
             template: `${MAIN_DIR}/index.html`,
             filename: `${DIST_PATH}/index.html`,

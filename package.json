@@ -1,8 +1,8 @@
 {
-  "name": "com.werules.gotinha",
-  "displayName": "Gotinha",
-  "version": "1.0.3",
-  "description": "A simple game to challenge your friends for the best score.",
+  "name": "com.example.app",
+  "displayName": "base-phaser-cordova-project",
+  "version": "1.0.0",
+  "description": "Description here.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
