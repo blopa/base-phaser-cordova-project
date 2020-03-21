@@ -10,6 +10,6 @@ export default {
         autoCenter: Phaser.Scale.CENTER_BOTH,
     },
     autoRound: false,
-    localStorageName: 'phaseres6webpack',
+    localStorageName: 'base-phaser-cordova-project',
     pixelArt: true,
 };

@@ -1,8 +1,8 @@
 import Phaser from 'phaser';
 
-export default class extends Phaser.Scene {
+class SplashScene extends Phaser.Scene {
     constructor() {
-        super({ key: 'SplashScene' });
+        super('SplashScene');
     }
 
     preload() {
@@ -22,3 +22,5 @@ export default class extends Phaser.Scene {
         // TODO
     }
 }
+
+export default SplashScene;
