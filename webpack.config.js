@@ -1,42 +1,58 @@
 const path = require('path');
 const webpack = require('webpack');
+const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 // PATHS
 const MAIN_DIR = path.resolve(__dirname, '');
 const IMAGE_DIR = path.resolve(__dirname, 'assets/images');
-const BUILD_PATH = path.resolve(__dirname, '../www/build');
-const DIST_PATH = path.resolve(__dirname, '../www');
+const BUILD_PATH = path.resolve(__dirname, 'dist/build');
+const DIST_PATH = path.resolve(__dirname, 'dist');
 
 module.exports = {
     entry: {
         main: path.resolve(__dirname, 'src/main.js'),
         vendor: ['phaser', 'webfontloader'],
     },
-    mode: 'production',
+    mode: 'development',
     output: {
         pathinfo: true,
         path: BUILD_PATH,
         publicPath: './build',
         filename: 'bundle.js',
     },
+    watch: true,
     plugins: [
+        new Dotenv({
+            path: './local.env', // load this now instead of the ones in '.env'
+        }),
         new webpack.DefinePlugin({
             CANVAS_RENDERER: JSON.stringify(true),
             WEBGL_RENDERER: JSON.stringify(true),
+            IS_DEV: JSON.stringify(true),
         }),
         new HtmlWebpackPlugin({
             hash: true,
-            minify: {
-                collapseWhitespace: true,
-                preserveLineBreaks: false,
-            },
+            /*
+             * minify: {
+             *     collapseWhitespace: true,
+             *     preserveLineBreaks: false,
+             * },
+             */
             title: 'base-phaser-cordova-project',
             favicon: `${IMAGE_DIR}/favicon.ico`,
             template: `${MAIN_DIR}/index.html`,
             filename: `${DIST_PATH}/index.html`,
             publicPath: './build',
+        }),
+        new BrowserSyncPlugin({
+            host: process.env.IP || 'localhost',
+            port: process.env.PORT || 3000,
+            server: {
+                baseDir: ['./dist'],
+            },
         }),
         new CopyWebpackPlugin([
             {

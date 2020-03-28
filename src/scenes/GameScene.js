@@ -2,9 +2,9 @@
 import Phaser from 'phaser';
 import ChristmasTree from '../sprites/ChristmasTree';
 
-export default class extends Phaser.Scene {
+class GameScene extends Phaser.Scene {
     constructor() {
-        super({ key: 'GameScene' });
+        super('GameScene');
     }
 
     init() {
@@ -21,6 +21,7 @@ export default class extends Phaser.Scene {
             x: 400,
             y: 300,
             asset: 'christmas_tree',
+            frame: 1,
         }).setScale(3);
 
         this.add.existing(this.christmastree);
@@ -30,3 +31,5 @@ export default class extends Phaser.Scene {
         });
     }
 }
+
+export default GameScene;
