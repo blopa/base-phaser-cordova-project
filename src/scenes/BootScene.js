@@ -1,7 +1,7 @@
-import Phaser from 'phaser';
+import { Scene } from 'phaser';
 import WebFont from 'webfontloader';
 
-class BootScene extends Phaser.Scene {
+class BootScene extends Scene {
     constructor() {
         super('BootScene');
     }
