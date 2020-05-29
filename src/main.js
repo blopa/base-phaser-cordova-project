@@ -1,4 +1,4 @@
-import Phaser from 'phaser';
+import { Game as PhaserGame } from 'phaser';
 
 import BootScene from './scenes/BootScene';
 import SplashScene from './scenes/SplashScene';
@@ -10,7 +10,7 @@ const gameConfig = Object.assign(config, {
     scene: [BootScene, SplashScene, GameScene],
 });
 
-class Game extends Phaser.Game {
+class Game extends PhaserGame {
     constructor() {
         super(gameConfig);
     }

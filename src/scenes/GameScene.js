@@ -1,8 +1,8 @@
 /* globals __DEV__ */
-import Phaser from 'phaser';
+import { Scene } from 'phaser';
 import ChristmasTree from '../sprites/ChristmasTree';
 
-class GameScene extends Phaser.Scene {
+class GameScene extends Scene {
     constructor() {
         super('GameScene');
     }
