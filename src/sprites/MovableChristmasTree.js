@@ -1,5 +1,5 @@
 import { GameObjects } from 'phaser';
-import { setSpriteDraggable } from '../utils';
+import { handleSpriteMovement } from '../utils';
 
 class DraggableChristmasTree extends GameObjects.Sprite {
     constructor({ scene, x, y, asset, frame }) {
@@ -8,9 +8,12 @@ class DraggableChristmasTree extends GameObjects.Sprite {
         this.setOrigin(1, 1);
 
         Object.assign(this, {
-            setSpriteDraggable,
+            handleSpriteMovement,
         });
-        this.setSpriteDraggable();
+    }
+
+    update(time, delta) {
+        this.handleSpriteMovement();
     }
 }
 

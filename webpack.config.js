@@ -54,12 +54,12 @@ module.exports = {
                 baseDir: ['./dist'],
             },
         }),
-        new CopyWebpackPlugin([
-            {
+        new CopyWebpackPlugin({
+            patterns: [{
                 from: 'assets',
                 to: '../assets',
-            },
-        ]),
+            }],
+        }),
     ],
     module: {
         rules: [
