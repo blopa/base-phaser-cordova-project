@@ -296,9 +296,11 @@ module.exports = {
         'rest-spread-spacing': 'warn',
         'template-curly-spacing': 'warn',
         'implicit-arrow-linebreak': 'off',
+        'global-require': 'off',
     },
     settings: {
         'import/resolver': {
+            node: {},
             webpack: {
                 config: {
                     resolve: {

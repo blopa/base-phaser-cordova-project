@@ -14,7 +14,9 @@ const DIST_PATH = path.resolve(__dirname, 'dist');
 module.exports = {
     entry: {
         main: path.resolve(__dirname, 'src/main.js'),
-        vendor: ['phaser', 'webfontloader'],
+        vendor: Object.keys(
+            require('./package.json').dependencies
+        ),
     },
     mode: 'development',
     output: {
