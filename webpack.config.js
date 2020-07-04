@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
 const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
@@ -22,8 +23,9 @@ module.exports = {
     output: {
         pathinfo: true,
         path: BUILD_PATH,
-        publicPath: './build',
-        filename: 'bundle.js',
+        publicPath: './build/',
+        filename: '[name].bundle.js',
+        chunkFilename: '[name].bundle.js',
     },
     watch: true,
     plugins: [
@@ -34,15 +36,10 @@ module.exports = {
             CANVAS_RENDERER: JSON.stringify(true),
             WEBGL_RENDERER: JSON.stringify(true),
             IS_DEV: JSON.stringify(true),
+            VERSION: JSON.stringify(require('./package.json').version),
         }),
         new HtmlWebpackPlugin({
             hash: true,
-            /*
-             * minify: {
-             *     collapseWhitespace: true,
-             *     preserveLineBreaks: false,
-             * },
-             */
             title: 'base-phaser-cordova-project',
             favicon: `${IMAGE_DIR}/favicon.ico`,
             template: `${MAIN_DIR}/index.html`,

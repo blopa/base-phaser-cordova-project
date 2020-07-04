@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
 const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
@@ -29,7 +30,8 @@ module.exports = (env = {}) => {
             pathinfo: true,
             path: buildPath,
             publicPath: './build/',
-            filename: 'bundle.js',
+            filename: '[name].bundle.js',
+            chunkFilename: '[name].bundle.js',
         },
         plugins: [
             new Dotenv({
@@ -55,12 +57,12 @@ module.exports = (env = {}) => {
                 filename: `${distPath}/index.html`,
                 publicPath: './build',
             }),
-            new CopyWebpackPlugin([
-                {
+            new CopyWebpackPlugin({
+                patterns: [{
                     from: 'assets',
                     to: '../assets',
-                },
-            ]),
+                }],
+            }),
         ],
         module: {
             rules: [
