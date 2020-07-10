@@ -25,7 +25,7 @@
         "browser-sync": "^2.26.7",
         "browser-sync-webpack-plugin": "^2.2.2",
         "copy-webpack-plugin": "^6.0.3",
-        "dotenv-webpack": "^1.8.0",
+        "dotenv-webpack": "^2.0.0",
         "eslint": "^7.4.0",
         "eslint-config-airbnb": "^18.2.0",
         "eslint-config-standard": "^14.1.1",
