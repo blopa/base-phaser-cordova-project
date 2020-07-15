@@ -45,6 +45,10 @@ module.exports = (env = {}) => {
             }),
             new HtmlWebpackPlugin({
                 hash: true,
+                minify: {
+                    collapseWhitespace: true,
+                    preserveLineBreaks: false,
+                },
                 title: 'base-phaser-cordova-project',
                 favicon: `${IMAGE_DIR}/favicon.ico`,
                 template: `${MAIN_DIR}/index.html`,
