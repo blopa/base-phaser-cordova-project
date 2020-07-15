@@ -5,17 +5,16 @@ const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-// PATH CONSTS
+// PATHS
 const MAIN_DIR = path.resolve(__dirname, '');
 const IMAGE_DIR = path.resolve(__dirname, 'assets/images');
+let BUILD_PATH = path.resolve(__dirname, 'dist/build');
+let DIST_PATH = path.resolve(__dirname, 'dist');
 
 module.exports = (env = {}) => {
-    let buildPath = path.resolve(__dirname, 'dist/build');
-    let distPath = path.resolve(__dirname, 'dist');
-
     if (env === 'mobile') {
-        buildPath = path.resolve(__dirname, 'mobile/www/build');
-        distPath = path.resolve(__dirname, 'mobile/www');
+        BUILD_PATH = path.resolve(__dirname, 'mobile/www/build');
+        DIST_PATH = path.resolve(__dirname, 'mobile/www');
     }
 
     return {
@@ -28,7 +27,7 @@ module.exports = (env = {}) => {
         mode: 'production',
         output: {
             pathinfo: true,
-            path: buildPath,
+            path: BUILD_PATH,
             publicPath: './build/',
             filename: '[name].bundle.js',
             chunkFilename: '[name].bundle.js',
@@ -40,21 +39,15 @@ module.exports = (env = {}) => {
             new webpack.DefinePlugin({
                 CANVAS_RENDERER: JSON.stringify(true),
                 WEBGL_RENDERER: JSON.stringify(true),
-                IS_DEV: JSON.stringify(false),
+                IS_DEV: JSON.stringify(true),
                 VERSION: JSON.stringify(require('./package.json').version),
-                // if we have an .env file, use it, otherwise use the func argument
-                'process.env.HOST': JSON.stringify(process.env.HOST || env.HOST),
             }),
             new HtmlWebpackPlugin({
                 hash: true,
-                minify: {
-                    collapseWhitespace: true,
-                    preserveLineBreaks: false,
-                },
                 title: 'base-phaser-cordova-project',
                 favicon: `${IMAGE_DIR}/favicon.ico`,
                 template: `${MAIN_DIR}/index.html`,
-                filename: `${distPath}/index.html`,
+                filename: `${DIST_PATH}/index.html`,
                 publicPath: './build',
             }),
             new CopyWebpackPlugin({
