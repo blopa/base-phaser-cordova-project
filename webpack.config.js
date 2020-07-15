@@ -5,6 +5,7 @@ const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const packageJson = require('./package.json');
 
 // PATHS
 const MAIN_DIR = path.resolve(__dirname, '');
@@ -17,7 +18,7 @@ module.exports = () => {
         entry: {
             main: path.resolve(__dirname, 'src/main.js'),
             vendor: Object.keys(
-                require('./package.json').dependencies
+                packageJson.dependencies
             ),
         },
         mode: 'development',
@@ -37,7 +38,7 @@ module.exports = () => {
                 CANVAS_RENDERER: JSON.stringify(true),
                 WEBGL_RENDERER: JSON.stringify(true),
                 IS_DEV: JSON.stringify(true),
-                VERSION: JSON.stringify(require('./package.json').version),
+                VERSION: JSON.stringify(packageJson.version),
             }),
             new HtmlWebpackPlugin({
                 hash: true,
